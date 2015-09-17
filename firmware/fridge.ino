@@ -65,7 +65,7 @@ void loop() {
   if (client.connected()) {
     client.loop();
     scale.set_scale(calibration_factor);
-    static float weight = scale.get_units()
+    static float weight = scale.get_units();
     // only trigger after a longer period or if the weight change is greater than 10 grams
     if (millis() - last_published > publish_interval || abs(weight - last_weight) > 0.01) {
       client.publish("devlol/h19/fridge/rawsamples", (String) weight);
